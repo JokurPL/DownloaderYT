@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #E3F2FD;
+    background: #2196F3;
+}
+
+main {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    margin-top: 15%;
+}
+
+.link {
+    width: 68%;
+    float: left;
+    margin-right: 1%;
+}
+
+.format {
+    font-size: 100%;
+    width: 30%;
+    float: left;
+}

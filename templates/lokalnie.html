@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmy</title>
+    <style>
+        * {
+            padding: 0 !important;
+            margin: 0 !important;
+            outline: none;
+        }
+        body {
+            background: #000;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .content {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .video {
+            background: #000;
+            position: absolute;
+            top: -2%;
+            width: 80%;
+            height: 100vh;
+            float: left;
+        }
+
+        video {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .chat {
+            background: #18181b;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            float: left;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        button {
+            position: absolute;
+            bottom: 2%;
+            z-index: 999;
+            cursor: pointer;
+            background: rgba(250,250,250, 0.5);
+            border: none;
+            width: 3%;
+        }
+        .lq {
+            right: 15%;
+            border-right: 2px solid #222;
+
+        }
+        .hq {
+            right: 12%;
+            background: rgba(250,250,250, 0.5);
+        }
+
+        .stream iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10%;
+            height: 5%;
+            z-index: 99;
+        }
+        #currentTime {
+            z-index: 999;
+            bottom: 1%;
+            left: 1%;
+            position: absolute;
+            color: #fff;
+        }
+    </style>
+    <script src="/static/qualityselector.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<span style="display: none;" id="filename">{{path}}</span>
+<span style="display: none;" id="i"></span>
+
+{#<div class="stream">#}
+{#    <iframe  src="https://player.twitch.tv/?channel=policjant___" frameborder="0" allowfullscreen="false" scrolling="no"></iframe>#}
+{#</div>#}
+<div class="qualitymanager">
+    <button class="lq" onclick="chooseLowQuality();">LQ</button>
+    <button class="hq" onclick="chooseHighQuality();">HQ</button>
+    <span id="currentTime"></span>
+</div>
+<div class="content">
+    <div class="video">
+        <video  id="video" style="border:none;" controls src="/static/{{path}}"></video>
+    </div>
+    <div class="chat">
+        <iframe src="https://www.twitch.tv/embed/policjant___/chat?darkpopout" style="border:none;" frameborder="0" scrolling="no" id="chat"></iframe>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $("#video").on("timeupdate", function(event)
+  {
+    onTrackedVideoFrame(this.currentTime, this.duration);
+  });
+})
+
+function onTrackedVideoFrame(currentTime, duration)
+{
+    var h = currentTime / 3600;
+    var hours = Math.floor(currentTime / 3600);
+    var min = Math.floor(currentTime / 60);
+	var seconds = Math.floor(currentTime - min * 60);
+    var minutes = Math.floor(h * 60 - 60 * hours);
+    $("#currentTime").text(hours + ":"+ minutes +":" + seconds );
+}
+</script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

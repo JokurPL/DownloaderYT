@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+        <meta charset="utf-8">
+        <title>Filmy</title>
+        <style>
+                * {
+                padding: 0;
+                margin: 0;
+                }
+                body {
+                background: #18181b;
+                }
+                .content {
+                width: 100vw;
+                }
+                #film {
+                width: 80%;
+                height: 100vh;
+                float: left;
+                }
+                #chat {
+                width: 20%;
+                height: 99vh;
+                }
+        </style>
+</head>
+<body>
+        <div class="content">
+                <iframe id="film" src="https://ebd.cda.pl/620x395/{{path}}/vfilm" style="border: none" frameBorder="0" scrolling="no" allowfullscreen name="v2"></iframe>
+                <iframe src="https://www.twitch.tv/embed/policjant___/chat?darkpopout" style="border: none;" frameBorder="0" scrolling="no" id="chat"></iframe>
+        </div>
+</body>
+</html>
